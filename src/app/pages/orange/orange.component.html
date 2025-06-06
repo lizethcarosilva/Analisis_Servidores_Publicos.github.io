@@ -1,0 +1,84 @@
+<section class="py-16 bg-gradient-to-b from-white to-gray-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Header -->
+    <div @fadeIn class="text-center mb-16">
+      <h1 class="text-4xl font-bold text-orange-600 mb-4">🍊 Orange Data Mining</h1>
+      <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+        Plataforma de análisis visual de datos y aprendizaje automático de código abierto utilizada en nuestro proyecto
+      </p>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+      <div @slideIn>
+        <img src="/image/orange-ilustr-2023.png"
+             alt="Orange Data Mining Interface"
+             class="rounded-xl shadow-2xl border-8 border-white transform rotate-1 hover:rotate-0 transition-transform">
+      </div>
+
+      <div @fadeIn>
+        <h2 class="text-2xl font-semibold text-orange-700 mb-6">Características principales</h2>
+        <ul class="space-y-4">
+          <li *ngFor="let feature of features" class="flex items-start">
+            <svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-gray-700">{{ feature }}</span>
+          </li>
+        </ul>
+
+        <div class="mt-8 p-6 bg-orange-50 rounded-xl border border-orange-100">
+          <h3 class="text-lg font-semibold text-orange-800 mb-3">En nuestro proyecto</h3>
+          <p class="text-gray-700">
+            Utilizamos Orange para el procesamiento inicial de datos, limpieza, transformación
+            y análisis exploratorio de la información de servidores públicos obtenida desde datos.gov.co.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Roles de datos -->
+    <div @fadeIn class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Roles de Datos en Orange</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div *ngFor="let roleData of dataRoles" class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+          <h3 class="text-xl font-semibold text-orange-600 mb-3">{{ roleData.role }}</h3>
+          <p class="text-gray-700 mb-4">{{ roleData.description }}</p>
+          <div class="space-y-1">
+            <p class="text-sm font-medium text-gray-600">Ejemplos:</p>
+            <ul class="text-sm text-gray-600">
+              <li *ngFor="let example of roleData.examples">• {{ example }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Widgets utilizados -->
+    <div @fadeIn class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Widgets Principales Utilizados</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div *ngFor="let widget of widgets" class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+          <h3 class="text-xl font-semibold text-orange-600 mb-3">{{ widget.name }}</h3>
+          <p class="text-gray-700 mb-4">{{ widget.description }}</p>
+          <div class="bg-orange-50 p-3 rounded-lg border border-orange-200">
+            <p class="text-sm font-medium text-orange-800 mb-1">Uso en el proyecto:</p>
+            <p class="text-sm text-gray-700">{{ widget.usage }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Objetivo del análisis -->
+    <div @fadeIn class="bg-gradient-to-r from-orange-50 to-red-50 p-8 rounded-2xl border border-orange-200">
+      <h2 class="text-2xl font-bold text-orange-800 mb-4">Objetivo del Análisis</h2>
+      <p class="text-lg text-gray-700 mb-4">
+        <strong>"¿Existe una relación entre la experiencia total (meses) de un servidor público y el nivel jerárquico de su cargo?"</strong>
+      </p>
+      <p class="text-gray-700">
+        A través de Orange Data Mining, procesamos y analizamos datos de servidores públicos para identificar
+        correlaciones entre la experiencia laboral acumulada y los niveles jerárquicos en la administración pública colombiana.
+      </p>
+    </div>
+  </div>
+</section>

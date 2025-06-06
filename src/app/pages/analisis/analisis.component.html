@@ -1,0 +1,110 @@
+<section class="py-16 bg-gradient-to-b from-white to-gray-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Header -->
+    <div @fadeIn class="text-center mb-16">
+      <h1 class="text-4xl font-bold text-green-600 mb-4">📊 Análisis de Resultados</h1>
+      <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+        Hallazgos y conclusiones del análisis de la relación entre experiencia laboral y nivel jerárquico
+      </p>
+    </div>
+
+    <!-- Metodología -->
+    <div @fadeIn class="mb-16">
+      <div class="bg-white rounded-2xl shadow-lg p-8">
+        <h2 class="text-2xl font-semibold mb-4 text-green-700">Metodología Aplicada</h2>
+        <p class="text-gray-700 mb-4">
+          En nuestro proyecto analizamos la relación entre la experiencia laboral total de servidores públicos y el nivel
+          jerárquico de sus cargos utilizando datos abiertos del gobierno colombiano.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-3 text-green-600">Pasos del Análisis:</h3>
+        <ol class="list-decimal pl-5 text-gray-700 space-y-2 mb-4">
+          <li *ngFor="let step of methodology">{{ step }}</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Procesamiento de datos -->
+    <div @fadeIn class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Procesamiento de Datos</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div *ngFor="let stage of dataProcessing"
+             @slideInUp
+             class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-100">
+          <div class="text-3xl font-bold text-green-600 mb-2">{{ stage.records }}</div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ stage.stage }}</h3>
+          <p class="text-sm text-gray-600">{{ stage.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variables utilizadas -->
+    <div @fadeIn class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Variables del Análisis</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div *ngFor="let variable of variables"
+             class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+          <h3 class="text-xl font-semibold text-green-600 mb-4">{{ variable.category }}</h3>
+          <ul class="space-y-2">
+            <li *ngFor="let item of variable.items"
+                class="text-gray-700 text-sm flex items-start">
+              <span class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modelos aplicados -->
+    <div @fadeIn class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Modelos Aplicados</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div *ngFor="let model of models"
+             class="bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-xl border border-green-200">
+          <div class="text-center mb-4">
+            <div class="text-3xl font-bold text-green-600">{{ model.accuracy }}</div>
+            <div class="text-sm text-gray-600">Precisión</div>
+          </div>
+          <h3 class="text-xl font-semibold text-green-700 mb-3">{{ model.name }}</h3>
+          <p class="text-gray-700">{{ model.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Principales hallazgos -->
+    <div @fadeIn class="mb-16">
+      <div class="bg-gradient-to-r from-green-50 to-teal-50 rounded-2xl p-8 border border-green-200">
+        <h2 class="text-2xl font-semibold mb-4 text-green-700">Principales Hallazgos</h2>
+        <ul class="space-y-3">
+          <li *ngFor="let finding of findings" class="flex items-start">
+            <svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-gray-700">{{ finding }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Conclusiones -->
+    <div @fadeIn>
+      <div class="bg-white rounded-2xl shadow-lg p-8">
+        <h2 class="text-2xl font-semibold mb-4 text-green-700">Conclusiones</h2>
+        <p class="text-gray-700 mb-4">
+          A través del uso de Orange Data Mining, se logró procesar y limpiar el conjunto de datos,
+          realizando un análisis eficaz sobre la experiencia laboral total de los servidores públicos en
+          relación con su nivel jerárquico.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Se emplearon diversas herramientas como el "Python Script" para manipular y transformar los datos,
+          y "Save Data" para generar un archivo CSV con los resultados procesados.
+        </p>
+        <p class="text-gray-700">
+          Este análisis contribuye a obtener información valiosa para la toma de decisiones en el ámbito
+          gubernamental, proporcionando insights sobre los patrones de carrera en el sector público colombiano.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

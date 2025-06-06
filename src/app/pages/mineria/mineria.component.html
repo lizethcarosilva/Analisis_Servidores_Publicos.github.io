@@ -1,0 +1,108 @@
+<section class="py-16 bg-gradient-to-b from-white to-gray-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Header -->
+    <div @fadeIn class="text-center mb-16">
+      <h1 class="text-4xl font-bold text-purple-600 mb-4">⛏️ Minería de Datos</h1>
+      <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+        Proceso de descubrimiento de patrones y conocimientos útiles en grandes conjuntos de datos
+      </p>
+    </div>
+
+    <!-- Introducción -->
+    <div @fadeIn class="mb-16">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="md:w-2/3">
+          <h2 class="text-2xl font-semibold mb-4 text-purple-700">¿Qué es la Minería de Datos?</h2>
+          <p class="text-gray-700 mb-4">
+            La minería de datos es el proceso de descubrir patrones, correlaciones y conocimientos útiles a partir
+            de grandes conjuntos de datos mediante técnicas estadísticas, de aprendizaje automático y visualización.
+          </p>
+          <p class="text-gray-700 mb-4">
+            En nuestro proyecto, aplicamos minería de datos para:
+          </p>
+          <ul class="list-disc pl-5 text-gray-700 space-y-2 mb-4">
+            <li>Identificar relaciones entre variables</li>
+            <li>Descubrir patrones ocultos en los datos</li>
+            <li>Predecir tendencias basadas en datos históricos</li>
+            <li>Visualizar información compleja de manera comprensible</li>
+            <li>Apoyar la toma de decisiones basada en evidencia</li>
+          </ul>
+        </div>
+        <div class="md:w-1/3">
+          <img src="assets/images/data-mining-process.jpg"
+               alt="Proceso de minería de datos"
+               class="rounded-lg shadow-xl">
+        </div>
+      </div>
+    </div>
+
+    <!-- Proceso de minería -->
+    <div @fadeIn class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Proceso de Minería de Datos</h2>
+      <div class="space-y-6">
+        <div *ngFor="let process of dataMiningProcess"
+             @slideInLeft
+             class="flex items-start bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+          <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-6 flex-shrink-0">
+            {{ process.step }}
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ process.title }}</h3>
+            <p class="text-gray-700 mb-3">{{ process.description }}</p>
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let tool of process.tools"
+                    class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full font-medium">
+                {{ tool }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Técnicas aplicadas -->
+    <div @fadeIn class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Técnicas Aplicadas</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div *ngFor="let technique of techniques"
+             class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl border border-purple-100">
+          <h3 class="text-xl font-semibold text-purple-700 mb-3">{{ technique.name }}</h3>
+          <p class="text-gray-700 mb-4">{{ technique.description }}</p>
+          <div class="bg-white p-3 rounded-lg border border-purple-200">
+            <span class="text-sm font-medium text-purple-600">Aplicación:</span>
+            <p class="text-sm text-gray-600 mt-1">{{ technique.application }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts Python -->
+    <div @fadeIn class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Scripts Python Utilizados</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div *ngFor="let script of pythonScripts"
+             class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+          <h3 class="text-xl font-semibold text-purple-600 mb-3">{{ script.title }}</h3>
+          <p class="text-gray-700 mb-4">{{ script.description }}</p>
+          <div class="bg-gray-50 p-3 rounded-lg">
+            <p class="text-sm font-medium text-gray-800 mb-1">Propósito:</p>
+            <p class="text-sm text-gray-600">{{ script.purpose }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Objetivo del proyecto -->
+    <div @fadeIn class="bg-gradient-to-r from-purple-50 to-indigo-50 p-8 rounded-2xl border border-purple-200">
+      <h2 class="text-2xl font-bold text-purple-800 mb-4">Objetivo del Proyecto</h2>
+      <p class="text-lg text-gray-700 mb-4">
+        <strong>"Analizar la relación entre la experiencia laboral total de un servidor público y el nivel jerárquico de su cargo"</strong>
+      </p>
+      <p class="text-gray-700">
+        Utilizando datos abiertos del gobierno colombiano y herramientas de Orange Data Mining,
+        buscamos establecer correlaciones relevantes que contribuyan a la comprensión de los
+        patrones de carrera en el sector público.
+      </p>
+    </div>
+  </div>
+</section>

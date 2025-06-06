@@ -1,0 +1,43 @@
+<header class="header-container bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl">
+  <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
+    <!-- Logo y Universidad -->
+    <div class="flex items-center space-x-6 mb-4 md:mb-0">
+      <a routerLink="/inicio" class="logo-container flex items-center">
+        <div class="logo-content flex items-center">
+          <div class="logo-icon bg-white/20 p-3 rounded-full mr-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+              </path>
+            </svg>
+          </div>
+          <span class="logo-text text-2xl font-bold">CIPAS</span>
+        </div>
+      </a>
+
+      <div class="university-badge bg-white/10 px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
+        Universidad del Tolima
+      </div>
+    </div>
+
+    <!-- Año académico -->
+    <div class="academic-year hidden md:block bg-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+      2025 - Minería de Datos
+    </div>
+  </div>
+
+  <!-- Contenido principal (opcional, si necesitas mostrar más en el header) -->
+  <div  class="header-content max-w-7xl mx-auto px-4 py-12 text-center">
+    <h1 class="main-title text-4xl md:text-5xl font-bold mb-4">{{ title }}</h1>
+    <p class="main-subtitle text-xl text-blue-100 max-w-3xl mx-auto mb-8">{{ subtitle }}</p>
+
+    <div class="navigation-buttons flex flex-wrap justify-center gap-4">
+      <a *ngFor="let item of navigationItems"
+         [routerLink]="item.path"
+         [class]="'nav-button px-6 py-3 rounded-full font-medium transition-all duration-300 ' +
+                  (item.primary ? 'bg-white text-blue-600 hover:bg-blue-50' : 'bg-white/10 hover:bg-white/20')">
+        {{ item.label }}
+      </a>
+    </div>
+  </div>
+</header>
