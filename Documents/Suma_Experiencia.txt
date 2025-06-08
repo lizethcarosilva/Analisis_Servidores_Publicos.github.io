@@ -1,0 +1,58 @@
+from Orange.data import Table, Domain, ContinuousVariable
+import numpy as np
+
+# Lista de columnas a sumar
+columnas_a_sumar = [
+    "Meses de Experiencia Público",
+    "Meses de Experiencia Privado",
+    "Meses de Experiencia Docente"
+]
+
+# Buscar las columnas en metas y extraer los valores reales
+valores_sumar = []
+
+for nombre_col in columnas_a_sumar:
+    encontrada = False
+
+    # Buscar en atributos (X)
+    for i, var in enumerate(in_data.domain.attributes):
+        if var.name == nombre_col:
+            col_vals = in_data.X[:, i]
+            encontrada = True
+            break
+
+    # Buscar en metas
+    if not encontrada:
+        for i, var in enumerate(in_data.domain.metas):
+            if var.name == nombre_col:
+                col_vals = in_data.metas[:, i]
+                encontrada = True
+                break
+
+    if not encontrada:
+        raise ValueError(f"No se encontró la columna '{nombre_col}' en X ni en metas.")
+
+    # Convertir todos los valores a números reales (por si son texto)
+    col_vals = np.array([float(val) if str(val).strip() != "" else np.nan for val in col_vals])
+    valores_sumar.append(col_vals)
+
+# Convertir a matriz y sumar por filas
+valores_sumar = np.array(valores_sumar).T
+suma_total = np.nansum(valores_sumar, axis=1).reshape(-1, 1)
+
+# Crear la nueva variable
+nueva_variable = ContinuousVariable("valor total experiencia (Meses)")
+nuevo_domain = Domain(
+    in_data.domain.attributes + (nueva_variable,),
+    in_data.domain.class_vars,
+    in_data.domain.metas
+)
+
+# Agregar la columna nueva al final de X
+nuevos_X = np.hstack((in_data.X, suma_total))
+
+# Crear la nueva tabla con el valor total
+nueva_tabla = Table(nuevo_domain, nuevos_X, in_data.Y, in_data.metas)
+
+# Salida final
+out_data = nueva_tabla

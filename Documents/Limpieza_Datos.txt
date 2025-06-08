@@ -1,0 +1,45 @@
+import numpy as np
+import pandas as pd
+from Orange.data import Table, Domain
+
+# Convertir partes a DataFrames
+attrs = [var.name for var in in_data.domain.attributes]
+class_vars = [var.name for var in in_data.domain.class_vars]
+metas = [var.name for var in in_data.domain.metas]
+
+df_attrs = pd.DataFrame(in_data.X, columns=attrs)
+df_class = pd.DataFrame(in_data.Y, columns=class_vars) if class_vars else pd.DataFrame()
+df_metas = pd.DataFrame(in_data.metas, columns=metas) if metas else pd.DataFrame()
+
+# Unir todo
+df_total = pd.concat([df_attrs, df_class, df_metas], axis=1)
+
+# Reemplazar valores tipo texto nulo por np.nan
+valores_nulos = ['null', 'NULL', 'NaN', 'nan', 'None', 'none', '', ' ']
+df_total = df_total.replace(valores_nulos, np.nan)
+
+# Convertir a float si se puede (opcional, útil para detectar bien los NaN)
+df_total = df_total.apply(pd.to_numeric, errors='ignore')
+
+# Eliminar filas con cualquier NaN
+df_total_clean = df_total.dropna()
+
+# Separar de nuevo
+n_attrs = len(attrs)
+n_class = len(class_vars)
+
+df_attrs_clean = df_total_clean.iloc[:, :n_attrs]
+df_class_clean = df_total_clean.iloc[:, n_attrs:n_attrs+n_class] if n_class else None
+df_metas_clean = df_total_clean.iloc[:, n_attrs+n_class:] if metas else None
+
+# Reconstruir dominio y tabla
+domain = Domain(in_data.domain.attributes, in_data.domain.class_vars, in_data.domain.metas)
+X_clean = df_attrs_clean.to_numpy()
+Y_clean = df_class_clean.to_numpy() if df_class_clean is not None else None
+metas_clean = df_metas_clean.to_numpy() if df_metas_clean is not None else None
+
+out_data = Table(domain, X_clean, Y_clean, metas_clean)
+
+# Verificación
+print(f"Filas originales: {len(in_data)}")
+print(f"Filas después de limpieza: {len(out_data)}")
